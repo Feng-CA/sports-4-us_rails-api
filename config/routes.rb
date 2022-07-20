@@ -13,5 +13,8 @@ Rails.application.routes.draw do
 
   get "users", to: "users#index", as: "users"
   get "users/:id", to: "users#show", as: "user"
-
+  scope '/auth' do
+    post "/signup", to: "users#create"
+    post "/signin", to: "users#sign_in"
+  end
 end
