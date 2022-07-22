@@ -49,7 +49,24 @@ if Activity.count == 0
   Activity.create(category_id:7, title:"Run for the Stars", date_time:"2022-08-30 10:00", location:"Mornington", description:"Beatiful Mornigton Scenery to be enjoyed", user_id:2, cost:100, quantity_limit:5)
   Activity.create(category_id:8, title:"Big Jump Basketball", date_time:"2022-11-01 11:00", location:"Melton", description:"Training specifically for Women", user_id:3, cost:100, quantity_limit:5)
 
-      
+  Activity.create(category_id:1, title:"Cycling at Sunshine", date_time:"2022-08-30 10:00", location:"Sunshine", description:"Beatiful Sunshine Scenery to be enjoyed", user_id:2, cost:100, quantity_limit:5)
+  Activity.create(category_id:2, title:"Golf is good", date_time:"2022-11-01 11:00", location:"Melton", description:"Training specifically for Women", user_id:3, cost:100, quantity_limit:5)
+  Activity.create(category_id:3, title:"Tennis at its best", date_time:"2022-01-30 09:00", location:"Toorak", description:"Play and Network with professionals from Toorak", user_id:1, cost:100, quantity_limit:5)
+  Activity.create(category_id:4, title:"Soccer like Ronaldo", date_time:"2022-08-30 10:00", location:"Mornington", description:"Beatiful Mornigton Scenery to be enjoyed", user_id:2, cost:100, quantity_limit:5)
+  Activity.create(category_id:5, title:"Steep Hiking", date_time:"2022-11-01 11:00", location:"Melton", description:"Training specifically for Women", user_id:3, cost:100, quantity_limit:5)
+  Activity.create(category_id:6, title:"Bigwicket Cricket", date_time:"2022-01-30 09:00", location:"Toorak", description:"Play and Network with professionals from Toorak", user_id:1, cost:100, quantity_limit:5)
+  Activity.create(category_id:7, title:"Run for the moon", date_time:"2022-08-30 10:00", location:"Mornington", description:"Beatiful Mornigton Scenery to be enjoyed", user_id:2, cost:100, quantity_limit:5)
+  Activity.create(category_id:8, title:"Big Hoop Basketball", date_time:"2022-11-01 11:00", location:"Melton", description:"Training specifically for Women", user_id:3, cost:100, quantity_limit:5)
+
+  Activity.create(category_id:1, title:"Fast Cycling at Mornington", date_time:"2022-08-30 10:00", location:"Mornington", description:"Beatiful Mornigton Scenery to be enjoyed", user_id:2, cost:100, quantity_limit:5)
+  Activity.create(category_id:2, title:"Golf all day", date_time:"2022-11-01 11:00", location:"Melton", description:"Training specifically for Women", user_id:3, cost:100, quantity_limit:5)
+  Activity.create(category_id:3, title:"Tennis for all", date_time:"2022-01-30 09:00", location:"Toorak", description:"Play and Network with professionals from Toorak", user_id:1, cost:100, quantity_limit:5)
+  Activity.create(category_id:4, title:"Soccer like Messi", date_time:"2022-08-30 10:00", location:"Mornington", description:"Beatiful Mornigton Scenery to be enjoyed", user_id:2, cost:100, quantity_limit:5)
+  Activity.create(category_id:5, title:"Long Hiking", date_time:"2022-11-01 11:00", location:"Melton", description:"Training specifically for Women", user_id:3, cost:100, quantity_limit:5)
+  Activity.create(category_id:6, title:"BigSix Cricket", date_time:"2022-01-30 09:00", location:"Toorak", description:"Play and Network with professionals from Toorak", user_id:1, cost:100, quantity_limit:5)
+  Activity.create(category_id:7, title:"Run Stardom", date_time:"2022-08-30 10:00", location:"Mornington", description:"Beatiful Mornigton Scenery to be enjoyed", user_id:2, cost:100, quantity_limit:5)
+  Activity.create(category_id:8, title:"Jordan Basketball", date_time:"2022-11-01 11:00", location:"Melton", description:"Training specifically for Women", user_id:3, cost:100, quantity_limit:5)
+   
 end 
 ##Activity.create(category_id:1, title: "cool")
 
