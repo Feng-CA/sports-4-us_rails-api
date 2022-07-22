@@ -44,10 +44,10 @@ end
 ##Activity.create(category_id:1, title: "cool")
 
 if User.count == 0 
-  User.create(first_name: "Jill", last_name:"Jack", email:"jill@email.com",password:"123",password_confirmation:"123")
-  User.create(first_name: "Mary", last_name:"Adams", email:"mary@email.com",password:"123",password_confirmation:"123")
-  User.create(first_name: "James", last_name:"Jacob", email:"jacob@email.com",password:"123",password_confirmation:"123")
-  User.create(first_name: "Billy", last_name:"Mayers", email:"billy@email.com",password:"123",password_confirmation:"123")
+  User.create(full_name: "Jill Jack", email:"jill@email.com",password:"123",password_confirmation:"123")
+  User.create(full_name: "Mary Adams", email:"mary@email.com",password:"123",password_confirmation:"123")
+  User.create(full_name: "James Jacob", email:"jacob@email.com",password:"123",password_confirmation:"123")
+  User.create(full_name: "Billy Mayers", email:"billy@email.com",password:"123",password_confirmation:"123")
 
 #    User.create(first_name:"Mary",last_name:"Stevens", email:"mary@email.com", password: "123")
 #    User.create(first_name:"Bob",last_name:"Thomas", email:"bob@email.com", password: "123")
