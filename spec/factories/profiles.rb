@@ -5,7 +5,14 @@ FactoryBot.define do
     contact_no { "MyString" }
     emergency_contact { "MyString" }
     emergency_contact_no { "MyString" }
-    interest { nil }
+    cycling { false }
+    golf { false }
+    tennis { false }
+    soccer { false }
+    hiking { false }
+    cricket { false }
+    running { false }
+    basketball { false }
     account { nil }
   end
 end

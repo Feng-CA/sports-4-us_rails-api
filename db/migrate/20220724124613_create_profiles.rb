@@ -6,7 +6,14 @@ class CreateProfiles < ActiveRecord::Migration[6.1]
       t.string :contact_no
       t.string :emergency_contact
       t.string :emergency_contact_no
-      t.references :interest, null: false, foreign_key: true
+      t.boolean :cycling
+      t.boolean :golf
+      t.boolean :tennis
+      t.boolean :soccer
+      t.boolean :hiking
+      t.boolean :cricket
+      t.boolean :running
+      t.boolean :basketball
       t.references :account, null: false, foreign_key: true
 
       t.timestamps
