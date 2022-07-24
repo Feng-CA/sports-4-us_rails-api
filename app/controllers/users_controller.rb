@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         else
           #render json: @user.id, status: :created #, location: @message
           auth_token = Knock::AuthToken.new payload: {sub: @user.id}
-          render json: {first_name: @user.first_name, jwt: auth_token.token}, status: :created
+          render json: {full_name: @user.full_name, jwt: auth_token.token}, status: :created
         end 
       end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
         @user = User.find_by_email(params[:email])
         if @user && @user.authenticate(params[:password])
           auth_token = Knock::AuthToken.new payload: {sub: @user.id}
-          render json: {first_name: @user.first_name, jwt: auth_token.token}, status: 200
+          render json: {full_name: @user.full_name, jwt: auth_token.token}, status: 200
         else
           render json: {error: "Invalid email or password"}
         end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
        end
 
        def user_params
-        params.permit(:first_name, :last_name, :email, :password, :password_confirmation )
+        params.permit(:full_name, :email, :password, :password_confirmation )
       end
 
 end

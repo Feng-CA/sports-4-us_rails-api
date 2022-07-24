@@ -3,7 +3,7 @@ FactoryBot.define do
     category { nil }
     title { "MyString" }
     description { "MyText" }
-    date_time { "2022-07-19 23:49:24" }
+    date_time { "2022-07-22 15:47:30" }
     location { "MyString" }
     user { nil }
     cost { 1 }
