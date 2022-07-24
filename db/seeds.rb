@@ -13,6 +13,24 @@ if Category.count == 0
       puts "created #{c} category"
     end
 end 
+
+if Interest.count == 0 
+  Interest.create(cycling:false, golf:true, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:true)
+  Interest.create(cycling:true, golf:true, tennis:true, soccer:true, hiking:true, cricket:true, running:false, basketball:true)
+  Interest.create(cycling:false, golf:false, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:false)
+  Interest.create(cycling:true, golf:true, tennis:false, soccer:false, hiking:false, cricket:true, running:false, basketball:true)
+end
+
+if Profile.count == 0
+
+  Profile.create(user_id:1, location:"Melbourne", contact_no:"0475897564", emergency_contact:"Jake", emergency_contact_no: "04705364756", interest_id:3, account: 1 )
+  Profile.create(user_id:2, location:"Sydney", contact_no:"0475897564", emergency_contact:"Sandy", emergency_contact_no: "04705364756", interest_id:2, account: 2 )
+  Profile.create(user_id:3, location:"Brisbane", contact_no:"0475897564", emergency_contact:"Ben", emergency_contact_no: "04705364756", interest_id:1, account: 3 )
+  Profile.create(user_id:4, location:"Perth", contact_no:"0475897564", emergency_contact:"Chang", emergency_contact_no: "04705364756", interest_id:4, account: 1 )
+
+end
+
+
 if Activity.count == 0 
     
   Activity.create(category_id:1, title:"Cycling in Yarra Valley", date_time:"2022-01-30 09:00", location:"Roundabout the Basin, Vic", description:"This is a pleasant Activity for people of all ages", user_id:1, cost:0, quantity_limit:0)

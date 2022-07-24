@@ -11,7 +11,9 @@ class ActivitiesController < ApplicationController
    
      # GET /activities/1
      def show
-       render json: @activity
+      #obj = {"id"=>@activity.id, "category"=>@activity.category.name}
+      render json: @activity
+      #render json: obj
      end
    
      # POST /activities

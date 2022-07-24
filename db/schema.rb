@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_22_120857) do
+ActiveRecord::Schema.define(version: 2022_07_24_063643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,33 @@ ActiveRecord::Schema.define(version: 2022_07_22_120857) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "interests", force: :cascade do |t|
+    t.boolean "cycling"
+    t.boolean "golf"
+    t.boolean "tennis"
+    t.boolean "soccer"
+    t.boolean "hiking"
+    t.boolean "cricket"
+    t.boolean "running"
+    t.boolean "basketball"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "location"
+    t.string "contact_no"
+    t.string "emergency_contact"
+    t.string "emergency_contact_no"
+    t.bigint "interest_id", null: false
+    t.integer "account"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["interest_id"], name: "index_profiles_on_interest_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "full_name"
     t.string "email"
@@ -46,4 +73,6 @@ ActiveRecord::Schema.define(version: 2022_07_22_120857) do
 
   add_foreign_key "activities", "categories"
   add_foreign_key "activities", "users"
+  add_foreign_key "profiles", "interests"
+  add_foreign_key "profiles", "users"
 end
