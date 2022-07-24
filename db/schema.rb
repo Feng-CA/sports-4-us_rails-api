@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_24_063643) do
+ActiveRecord::Schema.define(version: 2022_07_24_112458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "activities", force: :cascade do |t|
     t.bigint "category_id", null: false
@@ -56,9 +62,10 @@ ActiveRecord::Schema.define(version: 2022_07_24_063643) do
     t.string "emergency_contact"
     t.string "emergency_contact_no"
     t.bigint "interest_id", null: false
-    t.integer "account"
+    t.bigint "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_profiles_on_account_id"
     t.index ["interest_id"], name: "index_profiles_on_interest_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
@@ -73,6 +80,7 @@ ActiveRecord::Schema.define(version: 2022_07_24_063643) do
 
   add_foreign_key "activities", "categories"
   add_foreign_key "activities", "users"
+  add_foreign_key "profiles", "accounts"
   add_foreign_key "profiles", "interests"
   add_foreign_key "profiles", "users"
 end

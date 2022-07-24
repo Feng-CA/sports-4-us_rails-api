@@ -7,7 +7,7 @@ class CreateProfiles < ActiveRecord::Migration[6.1]
       t.string :emergency_contact
       t.string :emergency_contact_no
       t.references :interest, null: false, foreign_key: true
-      t.integer :account
+      t.references :account, null: false, foreign_key: true
 
       t.timestamps
     end

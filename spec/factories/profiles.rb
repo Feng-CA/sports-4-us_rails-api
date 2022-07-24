@@ -6,6 +6,6 @@ FactoryBot.define do
     emergency_contact { "MyString" }
     emergency_contact_no { "MyString" }
     interest { nil }
-    account { 1 }
+    account { nil }
   end
 end

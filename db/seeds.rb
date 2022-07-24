@@ -6,6 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 categories = ["Cycling", "Golf", "Tennis", "Soccer", "Hiking","Cricket","Running","Basketball"]
+#accounts = ["Member", "Organiser", "Admin"]
+
+if Account.count == 0 
+  Account.create(name: "Member")
+  Account.create(name: "Organiser")
+  Account.create(name: "Admin")
+end 
 
 if Category.count == 0 
     categories.each do |c| 
@@ -23,10 +30,10 @@ end
 
 if Profile.count == 0
 
-  Profile.create(user_id:1, location:"Melbourne", contact_no:"0475897564", emergency_contact:"Jake", emergency_contact_no: "04705364756", interest_id:3, account: 1 )
-  Profile.create(user_id:2, location:"Sydney", contact_no:"0475897564", emergency_contact:"Sandy", emergency_contact_no: "04705364756", interest_id:2, account: 2 )
-  Profile.create(user_id:3, location:"Brisbane", contact_no:"0475897564", emergency_contact:"Ben", emergency_contact_no: "04705364756", interest_id:1, account: 3 )
-  Profile.create(user_id:4, location:"Perth", contact_no:"0475897564", emergency_contact:"Chang", emergency_contact_no: "04705364756", interest_id:4, account: 1 )
+  Profile.create(user_id:1, location:"Melbourne", contact_no:"0475897564", emergency_contact:"Jake", emergency_contact_no: "04705364756", interest_id:3, account_id: 1 )
+  Profile.create(user_id:2, location:"Sydney", contact_no:"0475897564", emergency_contact:"Sandy", emergency_contact_no: "04705364756", interest_id:2, account_id: 2 )
+  Profile.create(user_id:3, location:"Brisbane", contact_no:"0475897564", emergency_contact:"Ben", emergency_contact_no: "04705364756", interest_id:1, account_id: 3 )
+  Profile.create(user_id:4, location:"Perth", contact_no:"0475897564", emergency_contact:"Chang", emergency_contact_no: "04705364756", interest_id:4, account_id: 1 )
 
 end
 
