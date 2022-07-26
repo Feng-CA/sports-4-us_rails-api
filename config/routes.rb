@@ -13,11 +13,13 @@ Rails.application.routes.draw do
   
 
   get "profiles", to: "profiles#index", as: "profiles"
-  get "profiles/:id", to: "profiles#show", as: "profile"
+  get "profiles/last", to: "profiles#last_profile", as: "last_profile"
+  get "profiles/:id", to: "profiles#show", as: "profile" 
   post "profiles", to: "profiles#create"
-  put "profiles/:id", to: "profiles#update"
+  put "profiles/:id", to: "profiles#update" 
   patch "profiles/:id", to: "profiles#update"
   delete "profiles/:id", to: "profiles#destroy", as: "delete_profile"
+
 
   get "users", to: "users#index", as: "users"
   get "users/:id", to: "users#show", as: "user"
