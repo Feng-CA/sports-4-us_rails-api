@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_24_124613) do
+ActiveRecord::Schema.define(version: 2022_07_27_024946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,23 @@ ActiveRecord::Schema.define(version: 2022_07_24_124613) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "inbox_senders", force: :cascade do |t|
+    t.bigint "inbox_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["inbox_id"], name: "index_inbox_senders_on_inbox_id"
+    t.index ["user_id"], name: "index_inbox_senders_on_user_id"
+  end
+
+  create_table "inboxes", force: :cascade do |t|
+    t.text "message"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_inboxes_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -73,6 +90,9 @@ ActiveRecord::Schema.define(version: 2022_07_24_124613) do
 
   add_foreign_key "activities", "categories"
   add_foreign_key "activities", "users"
+  add_foreign_key "inbox_senders", "inboxes"
+  add_foreign_key "inbox_senders", "users"
+  add_foreign_key "inboxes", "users"
   add_foreign_key "profiles", "accounts"
   add_foreign_key "profiles", "users"
 end

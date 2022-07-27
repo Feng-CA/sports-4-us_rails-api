@@ -102,3 +102,37 @@ if User.count == 0
   User.create(full_name: "Hugh Admin", email:"hugh@email.com",password:"123",password_confirmation:"123")
   
 end
+
+if Inbox.count == 0 
+  Inbox.create(message:"Let us get it started Jill", user_id:1)
+  Inbox.create(message:"Let us get it started Mary", user_id:2)
+  Inbox.create(message:"Let us get it started James", user_id:3)
+  Inbox.create(message:"Let us get it started Billy", user_id:4)
+  Inbox.create(message:"Let us get it started Clark", user_id:5)
+  Inbox.create(message:"Let us get it started Bridget", user_id:6)
+  Inbox.create(message:"Let us get it started Hugh", user_id:7)
+  Inbox.create(message:"Go for it Hugh", user_id:7)
+  Inbox.create(message:"Go for it Bridget", user_id:6)
+  Inbox.create(message:"Go for it Clark", user_id:5)
+  Inbox.create(message:"Go for it Hugh", user_id:7)
+  Inbox.create(message:"Go for it James", user_id:3)
+  Inbox.create(message:"Go for it Mary", user_id:2)
+  Inbox.create(message:"Go for it Jill", user_id:1)
+end
+
+if InboxSender.count == 0 
+  InboxSender.create(inbox_id:1, user_id:7)
+  InboxSender.create(inbox_id:2, user_id:6)
+  InboxSender.create(inbox_id:3, user_id:5)
+  InboxSender.create(inbox_id:4, user_id:7)
+  InboxSender.create(inbox_id:5, user_id:3)
+  InboxSender.create(inbox_id:6, user_id:2)
+  InboxSender.create(inbox_id:7, user_id:1)
+  InboxSender.create(inbox_id:8, user_id:1)
+  InboxSender.create(inbox_id:9, user_id:2)
+  InboxSender.create(inbox_id:10, user_id:3)
+  InboxSender.create(inbox_id:11, user_id:4)
+  InboxSender.create(inbox_id:12, user_id:5)
+  InboxSender.create(inbox_id:13, user_id:6)
+  InboxSender.create(inbox_id:14, user_id:7)
+end
