@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   
 
   get "profiles", to: "profiles#index", as: "profiles"
+  get "profiles/user_id", to: "profiles#find_user_profile", as: "find_user_profile"
   get "profiles/last", to: "profiles#last_profile", as: "last_profile"
   get "profiles/:id", to: "profiles#show", as: "profile" 
   post "profiles", to: "profiles#create"
@@ -22,7 +23,9 @@ Rails.application.routes.draw do
 
 
   get "users", to: "users#index", as: "users"
+  get "users/last", to: "users#last_user", as: "last_user"
   get "users/:id", to: "users#show", as: "user"
+  delete "users/:id", to: "users#destroy", as: "delete_user"
   scope '/auth' do
     post "/signup", to: "users#create"
     post "/signin", to: "users#sign_in"

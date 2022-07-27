@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-    before_action :set_user, only: [:show]
+    before_action :set_user, only: [:show, :destroy]
+    before_action :admin_ownership, only:[:destroy]
 
      # GET / users
      def index
@@ -38,6 +39,15 @@ class UsersController < ApplicationController
         end
       end
 
+      def last_user
+        @user = User.last
+        render json: @user
+     end
+
+      def destroy
+        @user.destroy
+      end
+
       private
        # Use callbacks to share common setup or constraints between actions.
        def set_user
@@ -46,6 +56,14 @@ class UsersController < ApplicationController
 
        def user_params
         params.permit(:full_name, :email, :password, :password_confirmation )
+      end
+
+      def admin_ownership 
+      
+        if current_user.profile.account.id != 3     #confirm Admin login
+          render json: {error: "Unauthorised to do this action"}
+        end  
+      
       end
 
 end

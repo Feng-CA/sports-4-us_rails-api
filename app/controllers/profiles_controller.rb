@@ -1,9 +1,11 @@
 class ProfilesController < ApplicationController
 
     before_action :authenticate_user, except: [:index, :show] 
-    before_action :check_ownership, only: [:update, :destroy]
     before_action :set_profile, only: [:show, :update, :destroy]
+    before_action :check_ownership, only: [:update]
     before_action :display_format, only: [:show]
+    before_action :admin_ownership, only:[:destroy]
+    
 
     # GET / profiles
     def index
@@ -24,8 +26,9 @@ class ProfilesController < ApplicationController
 
      # Post profile
      def create
-        @profile = Profile.create(profile_params)
-        
+       #@profile = Profile.create(profile_params)
+       
+       @profile = Profile.create({"user" => current_user, "account_id"=>1})
         #@profile = current_user.profile.create(profile_params)
     
        if @profile.save
@@ -37,7 +40,8 @@ class ProfilesController < ApplicationController
 
      def last_profile
         @profile = Profile.last
-        render json: @profile
+        @format  = {"fullname" =>@profile.user.full_name, "location"=>@profile.location, "contact_no" => @profile.contact_no , "emergency_contact"=> @profile.emergency_contact, "emergency_contact_no" => @profile.emergency_contact_no, "cycling"=>@profile.cycling, "golf"=>@profile.golf, "tennis"=>@profile.tennis, "soccer"=>@profile.soccer, "hiking"=>@profile.hiking, "cricket"=>@profile.cricket, "running"=>@profile.running, "basketball"=>@profile.basketball, "account_id"=>@profile.account.name}
+        render json: @format
      end
 
       # PATCH/PUT /profile/1
@@ -54,6 +58,16 @@ class ProfilesController < ApplicationController
         @profile.destroy
      end
 
+     def find_user_profile
+        #@profile = Profile.find_by_user_id(current_user.profile.user_id)
+        if current_user.profile != nil
+          @profile = Profile.find_by_user_id(current_user.profile.user_id)
+          render json: @profile
+        else
+          render json: {id: ""}
+        end
+      end
+
 
      private
       # Use callbacks to share common setup or constraints between actions.
@@ -69,9 +83,19 @@ class ProfilesController < ApplicationController
         @format  = {"fullname" =>@profile.user.full_name, "location"=>@profile.location, "contact_no" => @profile.contact_no , "emergency_contact"=> @profile.emergency_contact, "emergency_contact_no" => @profile.emergency_contact_no, "cycling"=>@profile.cycling, "golf"=>@profile.golf, "tennis"=>@profile.tennis, "soccer"=>@profile.soccer, "hiking"=>@profile.hiking, "cricket"=>@profile.cricket, "running"=>@profile.running, "basketball"=>@profile.basketball, "account_id"=>@profile.account.name}
     end
 
-    def check_ownership
-      if current_user.id != @profile.user.id
-        render json: {error: "Unauthorised to do this action"}
+    def admin_ownership 
+      
+        if current_user.profile.account.id != 3     #confirm Admin login
+          render json: {error: "Unauthorised to do this action"}
+        end  
+      
+    end
+
+    def check_ownership 
+      if current_user.id != @profile.user.id       #confirm ownership of profile
+        if current_user.profile.account.id != 3     #confirm Admin login
+          render json: {error: "Unauthorised to do this action"}
+        end  
       end
     end
 
