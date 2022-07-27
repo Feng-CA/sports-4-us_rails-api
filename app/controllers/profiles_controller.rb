@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
         i = 0
         @profiles = Profile.all
         @profiles.each do |profile| 
-            format_list[i] = {"fullname" =>profile.user.full_name, "location"=>profile.location, "contact_no" => profile.contact_no , "emergency_contact"=> profile.emergency_contact, "emergency_contact_no" => profile.emergency_contact_no, "cycling"=>profile.cycling, "golf"=>profile.golf, "tennis"=>profile.tennis, "soccer"=>profile.soccer, "hiking"=>profile.hiking, "cricket"=>profile.cricket, "running"=>profile.running, "basketball"=>profile.basketball, "account_id"=>profile.account.name}
+            format_list[i] = {"fullname" =>profile.user.full_name, "location"=>profile.location, "contact_no" => profile.contact_no , "emergency_contact"=> profile.emergency_contact, "emergency_contact_no" => profile.emergency_contact_no, "cycling"=>profile.cycling, "golf"=>profile.golf, "tennis"=>profile.tennis, "soccer"=>profile.soccer, "hiking"=>profile.hiking, "cricket"=>profile.cricket, "running"=>profile.running, "basketball"=>profile.basketball, "account_id"=>profile.account.name, "isAdmin"=>profile.isAdmin}
             i=i+1
         end
         render json: format_list
@@ -80,7 +80,7 @@ class ProfilesController < ApplicationController
      end
 
      def display_format
-        @format  = {"fullname" =>@profile.user.full_name, "location"=>@profile.location, "contact_no" => @profile.contact_no , "emergency_contact"=> @profile.emergency_contact, "emergency_contact_no" => @profile.emergency_contact_no, "cycling"=>@profile.cycling, "golf"=>@profile.golf, "tennis"=>@profile.tennis, "soccer"=>@profile.soccer, "hiking"=>@profile.hiking, "cricket"=>@profile.cricket, "running"=>@profile.running, "basketball"=>@profile.basketball, "account_id"=>@profile.account.name}
+        @format  = {"fullname" =>@profile.user.full_name, "location"=>@profile.location, "contact_no" => @profile.contact_no , "emergency_contact"=> @profile.emergency_contact, "emergency_contact_no" => @profile.emergency_contact_no, "cycling"=>@profile.cycling, "golf"=>@profile.golf, "tennis"=>@profile.tennis, "soccer"=>@profile.soccer, "hiking"=>@profile.hiking, "cricket"=>@profile.cricket, "running"=>@profile.running, "basketball"=>@profile.basketball, "account_id"=>@profile.account.name, "isAdmin"=>@profile.isAdmin}
     end
 
     def admin_ownership 

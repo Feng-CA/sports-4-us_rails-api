@@ -1,0 +1,2 @@
+class InboxSendersController < ApplicationController
+end

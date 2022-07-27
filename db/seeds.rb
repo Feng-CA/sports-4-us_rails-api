@@ -24,13 +24,13 @@ end
 
 if Profile.count == 0
 
-  Profile.create(user_id:1, location:"Melbourne", contact_no:"0475897564", emergency_contact:"Jake", emergency_contact_no: "04705364756", cycling:false, golf:true, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:true, account_id: 1 )
-  Profile.create(user_id:2, location:"Sydney", contact_no:"0475897564", emergency_contact:"Sandy", emergency_contact_no: "04705364756", cycling:true, golf:true, tennis:true, soccer:true, hiking:true, cricket:true, running:false, basketball:true, account_id: 1 )
-  Profile.create(user_id:3, location:"Brisbane", contact_no:"0475897564", emergency_contact:"Ben", emergency_contact_no: "04705364756", cycling:false, golf:false, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:false, account_id: 2 )
-  Profile.create(user_id:4, location:"Brisbane", contact_no:"0475897564", emergency_contact:"Ben", emergency_contact_no: "04705364756", cycling:false, golf:false, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:false, account_id: 2 )
-  Profile.create(user_id:5, location:"Brisbane", contact_no:"0475897564", emergency_contact:"Ben", emergency_contact_no: "04705364756", cycling:false, golf:false, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:false, account_id: 2 )
-  Profile.create(user_id:6, location:"Brisbane", contact_no:"0475897564", emergency_contact:"Ben", emergency_contact_no: "04705364756", cycling:false, golf:false, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:false, account_id: 2 )
-  Profile.create(user_id:7, location:"Perth", contact_no:"0475897564", emergency_contact:"Chang", emergency_contact_no: "04705364756", cycling:true, golf:true, tennis:false, soccer:false, hiking:false, cricket:true, running:false, basketball:true, account_id: 3 )
+  Profile.create(user_id:1, location:"Melbourne", contact_no:"0475897564", emergency_contact:"Jake", emergency_contact_no: "04705364756", cycling:false, golf:true, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:true, account_id: 1, isAdmin:false )
+  Profile.create(user_id:2, location:"Sydney", contact_no:"0475897564", emergency_contact:"Sandy", emergency_contact_no: "04705364756", cycling:true, golf:true, tennis:true, soccer:true, hiking:true, cricket:true, running:false, basketball:true, account_id: 1, isAdmin:false )
+  Profile.create(user_id:3, location:"Brisbane", contact_no:"0475897564", emergency_contact:"Ben", emergency_contact_no: "04705364756", cycling:false, golf:false, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:false, account_id: 2, isAdmin:false )
+  Profile.create(user_id:4, location:"Brisbane", contact_no:"0475897564", emergency_contact:"Ben", emergency_contact_no: "04705364756", cycling:false, golf:false, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:false, account_id: 2, isAdmin:false )
+  Profile.create(user_id:5, location:"Brisbane", contact_no:"0475897564", emergency_contact:"Ben", emergency_contact_no: "04705364756", cycling:false, golf:false, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:false, account_id: 2, isAdmin:false )
+  Profile.create(user_id:6, location:"Brisbane", contact_no:"0475897564", emergency_contact:"Ben", emergency_contact_no: "04705364756", cycling:false, golf:false, tennis:false, soccer:true, hiking:false, cricket:true, running:false, basketball:false, account_id: 2, isAdmin:false )
+  Profile.create(user_id:7, location:"Perth", contact_no:"0475897564", emergency_contact:"Chang", emergency_contact_no: "04705364756", cycling:true, golf:true, tennis:false, soccer:false, hiking:false, cricket:true, running:false, basketball:true, account_id: 3, isAdmin:true )
 
 end
 

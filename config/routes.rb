@@ -21,6 +21,11 @@ Rails.application.routes.draw do
   patch "profiles/:id", to: "profiles#update"
   delete "profiles/:id", to: "profiles#destroy", as: "delete_profile"
 
+  get "inboxes", to: "inboxes#index", as: "inboxes"
+  get "inboxes/personal", to: "inboxes#received_inbox_by_user", as: "received_inbox_by_user"
+  get "inboxes/:id", to: "inboxes#show", as: "inbox"
+
+
 
   get "users", to: "users#index", as: "users"
   get "users/last", to: "users#last_user", as: "last_user"
