@@ -193,4 +193,33 @@ if ChannelMessage.count == 0
   ChannelMessage.create(message:"I like all Basketball Events", category_id: 8, user_id:5)
 end
 
+if Booking.count == 0 
+
+  Booking.create(user_id:1, activity_id:1)
+  Booking.create(user_id:2, activity_id:1)
+  Booking.create(user_id:1, activity_id:2)
+  Booking.create(user_id:2, activity_id:2)
+  Booking.create(user_id:1, activity_id:3)
+  Booking.create(user_id:2, activity_id:3)
+  Booking.create(user_id:1, activity_id:4)
+  Booking.create(user_id:2, activity_id:4)
+  Booking.create(user_id:1, activity_id:5)
+  Booking.create(user_id:2, activity_id:5)
+  Booking.create(user_id:1, activity_id:6)
+  Booking.create(user_id:2, activity_id:6)
+  Booking.create(user_id:1, activity_id:7)
+  Booking.create(user_id:2, activity_id:7)
+  Booking.create(user_id:1, activity_id:8)
+  Booking.create(user_id:2, activity_id:8)
+  Booking.create(user_id:1, activity_id:9)
+  Booking.create(user_id:2, activity_id:9)
+  Booking.create(user_id:1, activity_id:10)
+  Booking.create(user_id:2, activity_id:10)
+  Booking.create(user_id:1, activity_id:11)
+  Booking.create(user_id:2, activity_id:11)
+  Booking.create(user_id:1, activity_id:12)
+  Booking.create(user_id:2, activity_id:12)
+
+end
+
 
