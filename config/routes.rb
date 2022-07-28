@@ -41,6 +41,9 @@ Rails.application.routes.draw do
   get "channelmessages", to: "channel_messages#index", as: "channel_messages"
   get "channelmessages/:id", to: "channel_messages#show_channel_messages", as: "show_channel_messages"
   post "channelmessages", to: "channel_messages#create"
+  put "channelmessages/:id", to: "channel_messages#update" 
+  patch "channelmessages/:id", to: "channel_messages#update"
+  delete "channelmessages/:id", to: "channel_messages#destroy", as: "delete_channel_messages"
 
   get "users", to: "users#index", as: "users"
   get "users/last", to: "users#last_user", as: "last_user"
