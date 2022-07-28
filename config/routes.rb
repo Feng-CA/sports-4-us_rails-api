@@ -21,10 +21,21 @@ Rails.application.routes.draw do
   patch "profiles/:id", to: "profiles#update"
   delete "profiles/:id", to: "profiles#destroy", as: "delete_profile"
 
-  get "inboxes", to: "inboxes#index", as: "inboxes"
-  get "inboxes/personal", to: "inboxes#received_inbox_by_user", as: "received_inbox_by_user"
-  get "inboxes/:id", to: "inboxes#show", as: "inbox"
+  get "messages", to: "messages#index", as: "messages"
+  get "messages/received", to: "messages#message_by_receiver", as: "received_messages"
+  get "messages/sent", to: "messages#message_by_sender", as: "sent_messages"
+  get "messages/all", to: "messages#all_user_messages", as: "all_messages"
+  get "messages/:id", to: "messages#show", as: "message"
+  post "messages", to: "messages#create"
+  delete "messages/:id", to: "messages#destroy", as: "delete_messages"
 
+  get "sentmessages", to: "sent_folders#index", as: "sent_folders"
+  get "sentmessages/received", to: "sent_folders#message_by_receiver", as: "received_sent_folders"
+  get "sentmessages/sent", to: "sent_folders#message_by_sender", as: "sent_sent_folders"
+  get "sentmessages/all", to: "sent_folders#all_user_messages", as: "all_sent_folders"
+  get "sentmessages/:id", to: "sent_folders#show", as: "sent_folder"
+  post "sentmessages", to: "sent_folders#create"
+  delete "sentmessages/:id", to: "sent_folders#destroy", as: "delete_sent_folders"
 
 
   get "users", to: "users#index", as: "users"

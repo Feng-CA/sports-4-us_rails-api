@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-categories = ["Cycling", "Golf", "Tennis", "Soccer", "Hiking","Cricket","Running","Basketball"]
+categories = ["Cycling", "Golf", "Tennis", "Soccer", "Hiking","Cricket","Running","Basketball","General"]
 #accounts = ["Member", "Organiser", "Admin"]
 
 if Account.count == 0 
@@ -103,36 +103,38 @@ if User.count == 0
   
 end
 
-if Inbox.count == 0 
-  Inbox.create(message:"Let us get it started Jill", user_id:1)
-  Inbox.create(message:"Let us get it started Mary", user_id:2)
-  Inbox.create(message:"Let us get it started James", user_id:3)
-  Inbox.create(message:"Let us get it started Billy", user_id:4)
-  Inbox.create(message:"Let us get it started Clark", user_id:5)
-  Inbox.create(message:"Let us get it started Bridget", user_id:6)
-  Inbox.create(message:"Let us get it started Hugh", user_id:7)
-  Inbox.create(message:"Go for it Hugh", user_id:7)
-  Inbox.create(message:"Go for it Bridget", user_id:6)
-  Inbox.create(message:"Go for it Clark", user_id:5)
-  Inbox.create(message:"Go for it Hugh", user_id:7)
-  Inbox.create(message:"Go for it James", user_id:3)
-  Inbox.create(message:"Go for it Mary", user_id:2)
-  Inbox.create(message:"Go for it Jill", user_id:1)
+if Message.count == 0 
+  Message.create(message:"Let us get it started Jill", receiver_user_id:1, sender_user_id:7)
+  Message.create(message:"Let us get it started Mary", receiver_user_id:2, sender_user_id:6)
+  Message.create(message:"Let us get it started James", receiver_user_id:3, sender_user_id:5)
+  Message.create(message:"Let us get it started Billy", receiver_user_id:4, sender_user_id:7)
+  Message.create(message:"Let us get it started Clark", receiver_user_id:5, sender_user_id:3)
+  Message.create(message:"Let us get it started Bridget", receiver_user_id:6, sender_user_id:2)
+  Message.create(message:"Let us get it started Hugh", receiver_user_id:7, sender_user_id:1)
+  Message.create(message:"Go for it Hugh", receiver_user_id:7, sender_user_id:1)
+  Message.create(message:"Go for it Bridget", receiver_user_id:6, sender_user_id:2)
+  Message.create(message:"Go for it Clark", receiver_user_id:5, sender_user_id:3)
+  Message.create(message:"Go for it Hugh", receiver_user_id:7, sender_user_id:4)
+  Message.create(message:"Go for it James", receiver_user_id:3, sender_user_id:5)
+  Message.create(message:"Go for it Mary", receiver_user_id:2, sender_user_id:6)
+  Message.create(message:"Go for it Jill", receiver_user_id:1, sender_user_id:7)
 end
 
-if InboxSender.count == 0 
-  InboxSender.create(inbox_id:1, user_id:7)
-  InboxSender.create(inbox_id:2, user_id:6)
-  InboxSender.create(inbox_id:3, user_id:5)
-  InboxSender.create(inbox_id:4, user_id:7)
-  InboxSender.create(inbox_id:5, user_id:3)
-  InboxSender.create(inbox_id:6, user_id:2)
-  InboxSender.create(inbox_id:7, user_id:1)
-  InboxSender.create(inbox_id:8, user_id:1)
-  InboxSender.create(inbox_id:9, user_id:2)
-  InboxSender.create(inbox_id:10, user_id:3)
-  InboxSender.create(inbox_id:11, user_id:4)
-  InboxSender.create(inbox_id:12, user_id:5)
-  InboxSender.create(inbox_id:13, user_id:6)
-  InboxSender.create(inbox_id:14, user_id:7)
+if SentFolder.count == 0 
+  SentFolder.create(message:"Let us get it started Jill", receiver_user_id:1, sender_user_id:7)
+  SentFolder.create(message:"Let us get it started Mary", receiver_user_id:2, sender_user_id:6)
+  SentFolder.create(message:"Let us get it started James", receiver_user_id:3, sender_user_id:5)
+  SentFolder.create(message:"Let us get it started Billy", receiver_user_id:4, sender_user_id:7)
+  SentFolder.create(message:"Let us get it started Clark", receiver_user_id:5, sender_user_id:3)
+  SentFolder.create(message:"Let us get it started Bridget", receiver_user_id:6, sender_user_id:2)
+  SentFolder.create(message:"Let us get it started Hugh", receiver_user_id:7, sender_user_id:1)
+  SentFolder.create(message:"Go for it Hugh", receiver_user_id:7, sender_user_id:1)
+  SentFolder.create(message:"Go for it Bridget", receiver_user_id:6, sender_user_id:2)
+  SentFolder.create(message:"Go for it Clark", receiver_user_id:5, sender_user_id:3)
+  SentFolder.create(message:"Go for it Hugh", receiver_user_id:7, sender_user_id:4)
+  SentFolder.create(message:"Go for it James", receiver_user_id:3, sender_user_id:5)
+  SentFolder.create(message:"Go for it Mary", receiver_user_id:2, sender_user_id:6)
+  SentFolder.create(message:"Go for it Jill", receiver_user_id:1, sender_user_id:7)
 end
+
+
