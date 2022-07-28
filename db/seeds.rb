@@ -137,4 +137,60 @@ if SentFolder.count == 0
   SentFolder.create(message:"Go for it Jill", receiver_user_id:1, sender_user_id:7)
 end
 
+if ChannelMessage.count == 0 
+  ChannelMessage.create(message:"Let us get General channel going", category_id: 9, user_id:1)
+  ChannelMessage.create(message:"Great to be in General", category_id: 9, user_id:2)
+  ChannelMessage.create(message:"Nice to meet all General members", category_id: 9, user_id:3)
+  ChannelMessage.create(message:"It is the season for General", category_id: 9, user_id:4)
+  ChannelMessage.create(message:"I like all General Sports", category_id: 9, user_id:5)
+
+  ChannelMessage.create(message:"Let us get Cycling channel going", category_id: 1, user_id:1)
+  ChannelMessage.create(message:"Great to be in Cycling", category_id: 1, user_id:2)
+  ChannelMessage.create(message:"Nice to meet all Cycling members", category_id: 1, user_id:3)
+  ChannelMessage.create(message:"It is the season for Cycling", category_id: 1, user_id:4)
+  ChannelMessage.create(message:"I like all Cycling Sports", category_id: 1, user_id:5)
+    
+  ChannelMessage.create(message:"Let us get Golfing channel going", category_id: 2, user_id:1)
+  ChannelMessage.create(message:"Great to be in Golfing", category_id: 2, user_id:2)
+  ChannelMessage.create(message:"Nice to meet all Golfing members", category_id: 2, user_id:3)
+  ChannelMessage.create(message:"It is the season for Golfing", category_id: 2, user_id:4)
+  ChannelMessage.create(message:"I like all Golfing Events", category_id: 2, user_id:5)
+
+  ChannelMessage.create(message:"Let us get Tennis channel going", category_id: 3, user_id:1)
+  ChannelMessage.create(message:"Great to be in Tennis", category_id: 3, user_id:2)
+  ChannelMessage.create(message:"Nice to meet all Tennis members", category_id: 3, user_id:3)
+  ChannelMessage.create(message:"It is the season for Tennis", category_id: 3, user_id:4)
+  ChannelMessage.create(message:"I like all Tennis Events", category_id: 3, user_id:5)
+
+  ChannelMessage.create(message:"Let us get Soccer channel going", category_id: 4, user_id:1)
+  ChannelMessage.create(message:"Great to be in Soccer", category_id: 4, user_id:2)
+  ChannelMessage.create(message:"Nice to meet all Soccer members", category_id: 4, user_id:3)
+  ChannelMessage.create(message:"It is the season for Soccer", category_id: 4, user_id:4)
+  ChannelMessage.create(message:"I like all Soccer Events", category_id: 4, user_id:5)
+
+  ChannelMessage.create(message:"Let us get Hiking channel going", category_id: 5, user_id:1)
+  ChannelMessage.create(message:"Great to be in Hiking", category_id: 5, user_id:2)
+  ChannelMessage.create(message:"Nice to meet all Hiking members", category_id: 5, user_id:3)
+  ChannelMessage.create(message:"It is the season for Hiking", category_id: 5, user_id:4)
+  ChannelMessage.create(message:"I like all Hiking Events", category_id: 5, user_id:5)
+
+  ChannelMessage.create(message:"Let us get Cricket channel going", category_id: 6, user_id:1)
+  ChannelMessage.create(message:"Great to be in Cricket", category_id: 6, user_id:2)
+  ChannelMessage.create(message:"Nice to meet all Cricket members", category_id: 6, user_id:3)
+  ChannelMessage.create(message:"It is the season for Cricket", category_id: 6, user_id:4)
+  ChannelMessage.create(message:"I like all Cricket Events", category_id: 6, user_id:5)
+
+  ChannelMessage.create(message:"Let us get Running channel going", category_id: 7, user_id:1)
+  ChannelMessage.create(message:"Great to be in Running", category_id: 7, user_id:2)
+  ChannelMessage.create(message:"Nice to meet all Running members", category_id: 7, user_id:3)
+  ChannelMessage.create(message:"It is the season for Running", category_id: 7, user_id:4)
+  ChannelMessage.create(message:"I like all Running Events", category_id: 7, user_id:5)
+
+  ChannelMessage.create(message:"Let us get Basketball channel going", category_id: 8, user_id:1)
+  ChannelMessage.create(message:"Great to be in Basketball", category_id: 8, user_id:2)
+  ChannelMessage.create(message:"Nice to meet all Basketball members", category_id: 8, user_id:3)
+  ChannelMessage.create(message:"It is the season for Basketball", category_id: 8, user_id:4)
+  ChannelMessage.create(message:"I like all Basketball Events", category_id: 8, user_id:5)
+end
+
 

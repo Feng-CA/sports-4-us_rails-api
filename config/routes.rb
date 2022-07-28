@@ -37,6 +37,10 @@ Rails.application.routes.draw do
   post "sentmessages", to: "sent_folders#create"
   delete "sentmessages/:id", to: "sent_folders#destroy", as: "delete_sent_folders"
 
+  
+  get "channelmessages", to: "channel_messages#index", as: "channel_messages"
+  get "channelmessages/:id", to: "channel_messages#show_channel_messages", as: "show_channel_messages"
+  post "channelmessages", to: "channel_messages#create"
 
   get "users", to: "users#index", as: "users"
   get "users/last", to: "users#last_user", as: "last_user"
