@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :authenticate_user, except: [:index]
+    before_action :authenticate_user, except: [:index, :sign_in, :create]
     before_action :set_user, only: [:show, :destroy]
     before_action :admin_ownership, only:[:destroy]
 
