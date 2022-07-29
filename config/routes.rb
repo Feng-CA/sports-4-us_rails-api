@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   delete "bookings/:id", to: "bookings#destroy", as: "delete_booking"
   
   get "users", to: "users#index", as: "users"
+  get "users/account/:id", to: "users#users_by_role", as: "users_by_role"
   get "users/last", to: "users#last_user", as: "last_user"
   get "users/:id", to: "users#show", as: "user"
   delete "users/:id", to: "users#destroy", as: "delete_user"

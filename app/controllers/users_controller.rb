@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+    before_action :authenticate_user, except: [:index]
     before_action :set_user, only: [:show, :destroy]
     before_action :admin_ownership, only:[:destroy]
 
@@ -8,6 +9,22 @@ class UsersController < ApplicationController
         @users = User.all
         render json: @users
       end
+
+      def users_by_role
+        @users = User.all
+        list_by_roles = []
+
+        i =0
+        @users.each do |user| 
+          if user.profile.account_id == params[:id].to_i
+            list_by_roles[i]= user
+            i=i+1  
+          end
+        end  
+        render json: list_by_roles
+
+      end
+
     
       # GET /users/1
       def show
@@ -16,14 +33,11 @@ class UsersController < ApplicationController
 
       # GET auth/users
       def create
-
         @user = User.create(user_params)
-        #print @user
 
         if @user.errors.any?
           render json: @user.errors, status: :unprocessable_entity
         else
-          #render json: @user.id, status: :created #, location: @message
           auth_token = Knock::AuthToken.new payload: {sub: @user.id}
           render json: {full_name: @user.full_name, jwt: auth_token.token}, status: :created
         end 
@@ -39,10 +53,7 @@ class UsersController < ApplicationController
         end
       end
 
-      def last_user
-        @user = User.last
-        render json: @user
-     end
+    
 
       def destroy
         @user.destroy

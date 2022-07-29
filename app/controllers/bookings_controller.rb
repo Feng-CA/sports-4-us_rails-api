@@ -30,10 +30,8 @@ class BookingsController < ApplicationController
     end
 
       # Post / bookings
-    def create
-      
-        @booking = current_user.bookings.create(bookings_params)
-    
+    def create 
+      @booking = current_user.bookings.create(bookings_params)
        if @booking.save
          render json: @booking, status: :created #, location: @score
        else
