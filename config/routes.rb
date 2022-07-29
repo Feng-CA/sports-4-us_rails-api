@@ -45,6 +45,12 @@ Rails.application.routes.draw do
   patch "channelmessages/:id", to: "channel_messages#update"
   delete "channelmessages/:id", to: "channel_messages#destroy", as: "delete_channel_messages"
 
+  get "bookings", to: "bookings#index", as: "bookings"
+  get "bookings/user", to: "bookings#show_by_user", as: "bookings_user"
+  get "bookings/:id", to: "bookings#show", as: "booking"
+  post "bookings", to: "bookings#create", as: "create_booking"
+  delete "bookings/:id", to: "bookings#destroy", as: "delete_booking"
+  
   get "users", to: "users#index", as: "users"
   get "users/last", to: "users#last_user", as: "last_user"
   get "users/:id", to: "users#show", as: "user"
