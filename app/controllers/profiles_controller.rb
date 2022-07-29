@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
         i = 0
         @profiles = Profile.all
         @profiles.each do |profile| 
-            format_list[i] = {"fullname" =>profile.user.full_name, "location"=>profile.location, "contact_no" => profile.contact_no , "emergency_contact"=> profile.emergency_contact, "emergency_contact_no" => profile.emergency_contact_no, "cycling"=>profile.cycling, "golf"=>profile.golf, "tennis"=>profile.tennis, "soccer"=>profile.soccer, "hiking"=>profile.hiking, "cricket"=>profile.cricket, "running"=>profile.running, "basketball"=>profile.basketball, "account_id"=>profile.account.name, "isAdmin"=>profile.isAdmin}
+            format_list[i] = {"id"=>profile.id,"fullname" =>profile.user.full_name, "location"=>profile.location, "contact_no" => profile.contact_no , "emergency_contact"=> profile.emergency_contact, "emergency_contact_no" => profile.emergency_contact_no, "cycling"=>profile.cycling, "golf"=>profile.golf, "tennis"=>profile.tennis, "soccer"=>profile.soccer, "hiking"=>profile.hiking, "cricket"=>profile.cricket, "running"=>profile.running, "basketball"=>profile.basketball, "account_id"=>profile.account.name, "isAdmin"=>profile.isAdmin}
             i=i+1
         end
         render json: format_list
@@ -38,12 +38,6 @@ class ProfilesController < ApplicationController
        end
      end
 
-     def last_profile
-        @profile = Profile.last
-        @format  = {"fullname" =>@profile.user.full_name, "location"=>@profile.location, "contact_no" => @profile.contact_no , "emergency_contact"=> @profile.emergency_contact, "emergency_contact_no" => @profile.emergency_contact_no, "cycling"=>@profile.cycling, "golf"=>@profile.golf, "tennis"=>@profile.tennis, "soccer"=>@profile.soccer, "hiking"=>@profile.hiking, "cricket"=>@profile.cricket, "running"=>@profile.running, "basketball"=>@profile.basketball, "account_id"=>@profile.account.name}
-        render json: @format
-     end
-
       # PATCH/PUT /profile/1
       def update
         if @profile.update(profile_params)
@@ -62,7 +56,8 @@ class ProfilesController < ApplicationController
         #@profile = Profile.find_by_user_id(current_user.profile.user_id)
         if current_user.profile != nil
           @profile = Profile.find_by_user_id(current_user.profile.user_id)
-          render json: @profile
+          @format  = {"id"=>@profile.id, "fullname" =>@profile.user.full_name, "location"=>@profile.location, "contact_no" => @profile.contact_no , "emergency_contact"=> @profile.emergency_contact, "emergency_contact_no" => @profile.emergency_contact_no, "cycling"=>@profile.cycling, "golf"=>@profile.golf, "tennis"=>@profile.tennis, "soccer"=>@profile.soccer, "hiking"=>@profile.hiking, "cricket"=>@profile.cricket, "running"=>@profile.running, "basketball"=>@profile.basketball, "account_id"=>@profile.account.name, "isAdmin"=>@profile.isAdmin}
+          render json: @format
         else
           render json: {id: ""}
         end
@@ -80,7 +75,7 @@ class ProfilesController < ApplicationController
      end
 
      def display_format
-        @format  = {"fullname" =>@profile.user.full_name, "location"=>@profile.location, "contact_no" => @profile.contact_no , "emergency_contact"=> @profile.emergency_contact, "emergency_contact_no" => @profile.emergency_contact_no, "cycling"=>@profile.cycling, "golf"=>@profile.golf, "tennis"=>@profile.tennis, "soccer"=>@profile.soccer, "hiking"=>@profile.hiking, "cricket"=>@profile.cricket, "running"=>@profile.running, "basketball"=>@profile.basketball, "account_id"=>@profile.account.name, "isAdmin"=>@profile.isAdmin}
+        @format  = {"id"=>@profile.id, "fullname" =>@profile.user.full_name, "location"=>@profile.location, "contact_no" => @profile.contact_no , "emergency_contact"=> @profile.emergency_contact, "emergency_contact_no" => @profile.emergency_contact_no, "cycling"=>@profile.cycling, "golf"=>@profile.golf, "tennis"=>@profile.tennis, "soccer"=>@profile.soccer, "hiking"=>@profile.hiking, "cricket"=>@profile.cricket, "running"=>@profile.running, "basketball"=>@profile.basketball, "account_id"=>@profile.account.name, "isAdmin"=>@profile.isAdmin}
     end
 
     def admin_ownership 
