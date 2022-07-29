@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
     before_action :set_booking, only: [:show, :destroy]
     before_action :all_bookings, only: [:show, :show_by_user, :index]
     before_action :check_ownership, only: [:show, :destroy]
+    before_action :check_member, only: [:create]
      
     # GET / bookings
      def index
@@ -57,6 +58,12 @@ class BookingsController < ApplicationController
 
     def all_bookings
         @bookings = Booking.all
+    end
+
+    def check_member
+        if current_user.profile.account.id != 1    #confirm Admin login
+            render json: {error: "Unauthorised to do this action"}
+        end  
     end
 
     def check_ownership 
