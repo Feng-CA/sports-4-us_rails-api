@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
 
     before_action :authenticate_user 
     before_action :set_profile, only: [:show, :update, :destroy]
-    before_action :check_ownership, only: [:update]
+    before_action :check_ownership, only: [:update, :create]
     before_action :display_format, only: [:show]
     before_action :admin_ownership, only:[:destroy]
     
