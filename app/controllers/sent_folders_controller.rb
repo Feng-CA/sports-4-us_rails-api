@@ -80,7 +80,7 @@ private
         @message = SentFolder.find(params[:id])
     end
     def set_all_messages
-        @messages = SentFolder.all
+        @messages = SentFolder.all.order("updated_at DESC")
     end
 
      def check_ownership
