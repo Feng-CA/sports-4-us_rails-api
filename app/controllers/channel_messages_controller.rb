@@ -3,8 +3,16 @@ class ChannelMessagesController < ApplicationController
     before_action :authenticate_user
     before_action :get_channel_messages, only:[:index, :show_channel_messages]
     before_action :set_channel_message, only:[:destroy, :update]
+    
     def index
-        render json: @channel_messages
+        
+        format_message = []
+        i=0
+        @channel_messages.each do |message|
+            format_message[i] = transform_output(message)
+            i = i+1
+         end
+        render json: format_message
 
     end
 
@@ -14,8 +22,9 @@ class ChannelMessagesController < ApplicationController
     i = 0
     @channel_messages.each do |channel_message| 
         if channel_message.category_id == params[:id].to_i
-            messages_for_channel[i]= {"id"=>channel_message.id, "message"=>channel_message.message, "channel"=>channel_message.category.name,"sender"=>channel_message.user.full_name, "date":channel_message.created_at.to_date, "time":channel_message.created_at.to_s(:time)}
-          i=i+1  
+            #messages_for_channel[i]= {"id"=>channel_message.id, "message"=>channel_message.message, "channel"=>channel_message.category.name,"sender"=>channel_message.user.full_name, "date":channel_message.created_at.to_date, "time":channel_message.created_at.to_s(:time)}
+            messages_for_channel[i] = transform_output(channel_message)
+            i=i+1  
         end
     end  
     render json: messages_for_channel
@@ -33,9 +42,9 @@ class ChannelMessagesController < ApplicationController
    def update
     if current_user.profile.isAdmin === true
         if @channel_message.update(channel_message_params)
-            render json: @channel_message
+            render json: transform_output(@channel_message)
         else
-            render json: @channel_message.errors, status: :unprocessable_entity
+            render json: transform_output(@channel_message).errors, status: :unprocessable_entity
         end
     end
    end
@@ -61,6 +70,8 @@ end
 def get_channel_messages
     @channel_messages = ChannelMessage.all.order("updated_at DESC")
 end
-  
 
+def transform_output(channel_message)
+    formated_message = {"id"=>channel_message.id, "message"=>channel_message.message, "channel"=>channel_message.category.name,"sender"=>channel_message.user.full_name, "date":channel_message.created_at.to_date, "time":channel_message.created_at.to_s(:time)}
+end
 end

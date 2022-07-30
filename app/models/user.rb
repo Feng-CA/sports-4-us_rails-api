@@ -4,8 +4,8 @@ class User < ApplicationRecord
     has_many :bookings
     has_many :channel_messages
     has_one :profile
-    has_many :sender_user_id_messages, :class_name => 'Message', :foreign_key => 'sender_user_id'
-    has_many :receiver_user_id_messages, :class_name => 'Message', :foreign_key => 'receiver_user_id'
+    has_many :send_user_id_messages, :class_name => 'Message', :foreign_key => 'sender_user_id'
+    has_many :receive_user_id_messages, :class_name => 'Message', :foreign_key => 'receiver_user_id'
     has_many :sender_user_id_messages, :class_name => 'SentFolder', :foreign_key => 'sender_user_id'
     has_many :receiver_user_id_messages, :class_name => 'SentFolder', :foreign_key => 'receiver_user_id'
     #belongs_to :profile

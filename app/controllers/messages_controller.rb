@@ -4,22 +4,29 @@ class MessagesController < ApplicationController
     before_action :set_message, only: [:show, :destroy]
     before_action :set_all_messages, except: [:show, :create, :destroy]
     before_action :check_ownership, only: [:destroy, :show]
+
     
     def index
-        render json: @messages
+      format_message = []
+      i=0
+      @messages.each do |message|
+        format_message[i] = transform_output(message)
+        i = i+1
+      end
+        render json: format_message
     end
 
     def create  
-        @message = current_user.sender_user_id_messages.create(message_params)
+        @message = current_user.send_user_id_messages.create(message_params)
             if @message.save
-            render json: @message, status: :created 
+              render json: transform_output(@message), status: :created 
             else
-            render json: @message.errors, status: :unprocessable_entity
+              render json: transform_output(@message), status: :unprocessable_entity
             end
     end
     
     def show
-        render json: @message
+        render json: transform_output(@message)
     end
 
     def message_by_receiver
@@ -80,5 +87,9 @@ private
          if current_user.id !=@message.receiver_user_id
            render json: {error: "You don't have permission to do that"}, status: 401
          end
+     end
+
+     def transform_output(message)
+      formated_message = {"message_id"=>message.id ,"sender"=>message.sender_user.full_name,"receiver"=>message.receiver_user.full_name, "message"=>message.message, "date":message.created_at.to_date, "time":message.created_at.to_s(:time)}
      end
 end
