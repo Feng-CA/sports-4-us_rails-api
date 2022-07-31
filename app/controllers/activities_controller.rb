@@ -7,13 +7,20 @@ class ActivitiesController < ApplicationController
      # GET / activities
      def index
        @activities = Activity.all
-       render json: @activities
+       format_activities = []
+       i=0
+       @activities.each do |activity|
+         format_activities[i] = transform_output(activity)
+         i = i+1
+       end
+         render json: format_activities
+
      end
     
      # GET /activities/1
      def show
      
-      render json: @activity
+      render json: transform_output(@activity)
    
      end
    
@@ -23,18 +30,18 @@ class ActivitiesController < ApplicationController
       @activity = Activity.create(activity_params)
      
         if @activity.save
-          render json: @activity, status: :created #, location: @score
+          render json: transform_output(@activity), status: :created #, location: @score
         else
-          render json: @activity.errors, status: :unprocessable_entity
+          render json: transform_output(@activity).errors, status: :unprocessable_entity
         end
      end
    
      # PATCH/PUT /activities/1
      def update
        if @activity.update(activity_params)
-         render json: @activity
+         render json: transform_output(@activity)
        else
-         render json: @activity.errors, status: :unprocessable_entity
+         render json: transform_output(@activity).errors, status: :unprocessable_entity
        end
      end
    
@@ -59,5 +66,9 @@ class ActivitiesController < ApplicationController
             render json: {error: "Unauthorised to do this action"}
           end  
       end
+
+      def transform_output(activity)
+        formated_message = {"id"=>activity.id, "category"=>activity.category.name ,"title"=>activity.title, "description"=>activity.description, "date_time"=>activity.date_time, "location"=>activity.location, "organiser"=>activity.user.full_name, "cost"=>activity.cost, "quantity_limit"=>activity.quantity_limit}
+       end
 
 end
