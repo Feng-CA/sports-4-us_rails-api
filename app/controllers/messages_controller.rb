@@ -19,9 +19,11 @@ class MessagesController < ApplicationController
     def create  
         @message = current_user.send_user_id_messages.create(message_params)
             if @message.save
-              render json: transform_output(@message), status: :created 
+              #render json: transform_output(@message), status: :created 
+              render json: @message, status: :created 
             else
-              render json: transform_output(@message), status: :unprocessable_entity
+              render json: @message, status: :unprocessable_entity
+               #render json: transform_output(@message), status: :unprocessable_entity
             end
     end
     
