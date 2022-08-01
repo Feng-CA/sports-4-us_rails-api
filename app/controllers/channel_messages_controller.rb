@@ -33,9 +33,9 @@ class ChannelMessagesController < ApplicationController
    def create
         @channel_message = current_user.channel_messages.create(channel_message_params)
         if @channel_message.save
-            render json: @channel_message, status: :created 
+            render json: transform_output(@channel_message), status: :created 
         else
-            render json: @channel_message.errors, status: :unprocessable_entity
+            render json: transform_output(@channel_message).errors, status: :unprocessable_entity
         end
    end
 

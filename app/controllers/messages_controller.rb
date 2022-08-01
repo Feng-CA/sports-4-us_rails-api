@@ -22,8 +22,8 @@ class MessagesController < ApplicationController
               #render json: transform_output(@message), status: :created 
               render json: @message, status: :created 
             else
-              render json: @message, status: :unprocessable_entity
-               #render json: transform_output(@message), status: :unprocessable_entity
+              #render json: @message, status: :unprocessable_entity
+               render json: transform_output(@message), status: :unprocessable_entity
             end
     end
     
