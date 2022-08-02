@@ -1,6 +1,6 @@
 class ChannelMessagesController < ApplicationController
 
-    before_action :authenticate_user
+    before_action :authenticate_user, except: [:index]
     before_action :get_channel_messages, only:[:index, :show_channel_messages]
     before_action :set_channel_message, only:[:destroy, :update]
     

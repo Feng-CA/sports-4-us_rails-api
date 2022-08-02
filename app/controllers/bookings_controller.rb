@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-    before_action :authenticate_user
+    before_action :authenticate_user, except: [:index]
     before_action :set_booking, only: [:show, :destroy]
     before_action :all_bookings, only: [:show, :show_by_user, :index]
     before_action :check_ownership, only: [:show, :destroy]
