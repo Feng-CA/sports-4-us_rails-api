@@ -7,13 +7,19 @@ class BookingsController < ApplicationController
      
     # GET / bookings
      def index
-        #@bookings = Booking.all
-        render json: @bookings
-     end
+      formated_booking = []
+      i=0
+      @bookings.each do |booking|
+        formated_booking[i] = transform_output(booking)
+        i = i+1
+      end
+        render json: formated_booking
+    end
+     
 
      # GET / bookings
     def show
-        render json: @booking
+        render json: transform_output(@booking)
     end
 
     def show_by_user
@@ -22,7 +28,7 @@ class BookingsController < ApplicationController
         i =0
         @bookings.each do |booking| 
           if booking.user_id == current_user.id
-            user_bookings[i] = booking
+            user_bookings[i] = transform_output(booking)
             i=i+1  
           end
         end  
@@ -33,9 +39,9 @@ class BookingsController < ApplicationController
     def create 
       @booking = current_user.bookings.create(bookings_params)
        if @booking.save
-         render json: @booking, status: :created #, location: @score
+         render json: transform_output(@booking), status: :created #, location: @score
        else
-         render json: @booking.errors, status: :unprocessable_entity
+         render json: transform_output(@booking).errors, status: :unprocessable_entity
        end
     end
 
@@ -55,7 +61,7 @@ class BookingsController < ApplicationController
     end
 
     def all_bookings
-        @bookings = Booking.all
+        @bookings = Booking.all.order("updated_at DESC")
     end
 
     def check_member
@@ -71,6 +77,9 @@ class BookingsController < ApplicationController
           end  
         end
       end
-
+    
+    def transform_output(booking)
+        formated_booking = {"bookingId"=> booking.id, "member"=>booking.user.full_name ,"activity"=>booking.activity.title, "date":booking.created_at.to_date, "time":booking.created_at.to_s(:time)}
+    end
 
 end
