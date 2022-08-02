@@ -79,7 +79,7 @@ class BookingsController < ApplicationController
       end
     
     def transform_output(booking)
-        formated_booking = {"bookingId"=> booking.id, "member"=>booking.user.full_name ,"activity"=>booking.activity.title, "date":booking.created_at.to_date, "time":booking.created_at.to_s(:time)}
+        formated_booking = {"bookingId"=> booking.id, "member"=>booking.user.full_name , "activity_id"=>booking.activity.id, "activity_title"=>booking.activity.title }
     end
 
 end
