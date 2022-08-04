@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
    
      # GET / activities
      def index
-       @activities = Activity.all
+       @activities = Activity.all.order("updated_at DESC")
        format_activities = []
        i=0
        @activities.each do |activity|
@@ -32,7 +32,7 @@ class ActivitiesController < ApplicationController
         if @activity.save
           render json: transform_output(@activity), status: :created #, location: @score
         else
-          render json: transform_output(@activity).errors, status: :unprocessable_entity
+          render json: @activity.errors, status: :unprocessable_entity
         end
      end
    
@@ -41,7 +41,7 @@ class ActivitiesController < ApplicationController
        if @activity.update(activity_params)
          render json: transform_output(@activity)
        else
-         render json: transform_output(@activity).errors, status: :unprocessable_entity
+         render json: @activity.errors, status: :unprocessable_entity
        end
      end
    
@@ -58,8 +58,9 @@ class ActivitiesController < ApplicationController
    
        # Only allow a list of trusted parameters through.
        def activity_params
-         params.require(:activity).permit(:category_id, :title, :description, :date_time, :location, :user_id, :cost, :quantity_limit )
-       end
+         #params.require(:activity).permit(:category_id, :title, :description, :date_time, :location, :user_id, :cost, :quantity_limit )
+         params.permit(:category_id, :title, :description, :date_time, :location, :user_id, :cost, :quantity_limit )
+        end
 
        def check_admin 
           if current_user.profile.account.id != 3     #confirm Admin login
