@@ -1,12 +1,30 @@
 class UsersController < ApplicationController
 
-    before_action :set_user, only: [:show]
+    before_action :authenticate_user, except: [:index, :sign_in, :create]
+    before_action :set_user, only: [:show, :destroy]
+    before_action :admin_ownership, only:[:destroy]
 
      # GET / users
      def index
         @users = User.all
         render json: @users
       end
+
+      def users_by_role
+        @users = User.all
+        list_by_roles = []
+
+        i =0
+        @users.each do |user| 
+          if user.profile.account_id == params[:id].to_i
+            list_by_roles[i]= user
+            i=i+1  
+          end
+        end  
+        render json: list_by_roles
+
+      end
+
     
       # GET /users/1
       def show
@@ -15,14 +33,11 @@ class UsersController < ApplicationController
 
       # GET auth/users
       def create
-
         @user = User.create(user_params)
-        #print @user
 
         if @user.errors.any?
           render json: @user.errors, status: :unprocessable_entity
         else
-          #render json: @user.id, status: :created #, location: @message
           auth_token = Knock::AuthToken.new payload: {sub: @user.id}
           render json: {full_name: @user.full_name, jwt: auth_token.token}, status: :created
         end 
@@ -38,6 +53,12 @@ class UsersController < ApplicationController
         end
       end
 
+    
+
+      def destroy
+        @user.destroy
+      end
+
       private
        # Use callbacks to share common setup or constraints between actions.
        def set_user
@@ -46,6 +67,14 @@ class UsersController < ApplicationController
 
        def user_params
         params.permit(:full_name, :email, :password, :password_confirmation )
+      end
+
+      def admin_ownership 
+      
+        if current_user.profile.account.id != 3     #confirm Admin login
+          render json: {error: "Unauthorised to do this action"}
+        end  
+      
       end
 
 end
