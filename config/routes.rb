@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   
   get "channelmessages", to: "channel_messages#index", as: "channel_messages"
+  get "channelmessages/messages/:id", to: "channel_messages#show_each"
   get "channelmessages/:id", to: "channel_messages#show_channel_messages", as: "show_channel_messages"
   post "channelmessages", to: "channel_messages#create"
   put "channelmessages/:id", to: "channel_messages#update" 
