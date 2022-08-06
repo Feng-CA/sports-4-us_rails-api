@@ -1,5 +1,13 @@
 require 'rails_helper'
+RSpec.describe "/users", type: :request do
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "get all messages at /users" do
+    it "returns all users " do
+      get "/users"
+      expect(response).to have_http_status(:success)
+    end
+
+  end
+
 end

@@ -1,7 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe "Bookings", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
-  end
+RSpec.describe "/bookings", type: :request do
+  describe "get all activities at /bookings" do
+      it "returns all bookings" do
+        get "/bookings"
+        print response
+        expect(response).to have_http_status(200)
+      end
+    end
+
 end
