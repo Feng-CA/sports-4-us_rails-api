@@ -17,6 +17,7 @@ class ProfilesController < ApplicationController
             i=i+1
         end
         render json: format_list
+        #render json: @profiles
      end
    
      # GET /profiles/1
@@ -32,7 +33,7 @@ class ProfilesController < ApplicationController
         #@profile = current_user.profile.create(profile_params)
     
        if @profile.save
-         render json: @profile, status: :created #, location: @score
+         render json: transform_output(@profile), status: :created #, location: @score
        else
          render json: @profile.errors, status: :unprocessable_entity
        end
@@ -41,7 +42,7 @@ class ProfilesController < ApplicationController
       # PATCH/PUT /profile/1
       def update
         if @profile.update(profile_params)
-          render json: @profile
+          render json: transform_output(@profile)
         else
           render json: @profile.errors, status: :unprocessable_entity
         end
@@ -94,6 +95,10 @@ class ProfilesController < ApplicationController
         end  
       end
     end
+
+    def transform_output(profile)
+      formated_profile = {"id"=>@profile.id, "fullname" =>@profile.user.full_name, "location"=>@profile.location, "contact_no" => @profile.contact_no , "emergency_contact"=> @profile.emergency_contact, "emergency_contact_no" => @profile.emergency_contact_no, "cycling"=>@profile.cycling, "golf"=>@profile.golf, "tennis"=>@profile.tennis, "soccer"=>@profile.soccer, "hiking"=>@profile.hiking, "cricket"=>@profile.cricket, "running"=>@profile.running, "basketball"=>@profile.basketball, "account_id"=>@profile.account.name, "isAdmin"=>@profile.isAdmin}
+     end
 
 end
 
