@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :authenticate_user, except: [:index, :sign_in, :create]
+    before_action :authenticate_user, except: [:destroy, :users_by_role, :index, :sign_in, :create, :show]
     before_action :set_user, only: [:show, :destroy]
     before_action :admin_ownership, only:[:destroy]
 
@@ -13,9 +13,9 @@ class UsersController < ApplicationController
       def users_by_role
         @users = User.all
         list_by_roles = []
-
         i =0
         @users.each do |user| 
+          print @users
           if user.profile.account_id == params[:id].to_i
             list_by_roles[i]= user
             i=i+1  
@@ -53,14 +53,13 @@ class UsersController < ApplicationController
         end
       end
 
-    
-
       def destroy
         @user.destroy
       end
 
-      private
+    private
        # Use callbacks to share common setup or constraints between actions.
+
        def set_user
          @user = User.find(params[:id])
        end
