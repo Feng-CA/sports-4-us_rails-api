@@ -1,5 +1,13 @@
 require 'rails_helper'
+RSpec.describe "/bookings", type: :request do
 
-RSpec.describe Booking, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "get all messages at /bookings" do
+    it "returns all bookings " do
+      get "/bookings"
+      expect(response).to have_http_status(:success)
+    end
+
+  end
+
 end

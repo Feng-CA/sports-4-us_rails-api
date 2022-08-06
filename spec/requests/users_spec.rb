@@ -1,7 +1,11 @@
 require 'rails_helper'
+RSpec.describe "/users", type: :request do
+  describe "get all activities at /users" do
+      it "returns all users" do
+        get "/users"
+        print response
+        expect(response).to have_http_status(200)
+      end
+    end
 
-RSpec.describe "Users", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
-  end
 end

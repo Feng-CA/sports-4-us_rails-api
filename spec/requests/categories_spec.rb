@@ -1,7 +1,11 @@
 require 'rails_helper'
+RSpec.describe "/categories", type: :request do
+  describe "get all activities at /categories" do
+      it "returns all categories" do
+        get "/categories"
+        print response
+        expect(response).to have_http_status(200)
+      end
+    end
 
-RSpec.describe "Categories", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
-  end
 end

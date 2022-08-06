@@ -1,6 +1,6 @@
 class ChannelMessagesController < ApplicationController
 
-    before_action :authenticate_user, except: [:index]
+    before_action :authenticate_user, except: [:index, :show_each]
     before_action :get_channel_messages, only:[:index, :show_channel_messages]
     before_action :set_channel_message, only:[:destroy, :update]
     
@@ -14,6 +14,11 @@ class ChannelMessagesController < ApplicationController
          end
         render json: format_message
 
+    end
+
+    def show_each
+        @channel_message = ChannelMessage.find(params[:id])
+        render json: transform_output(@channel_message)
     end
 
    def show_channel_messages

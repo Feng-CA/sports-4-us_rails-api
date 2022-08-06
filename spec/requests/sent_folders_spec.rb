@@ -1,7 +1,11 @@
 require 'rails_helper'
+RSpec.describe "/sentmessages", type: :request do
+  describe "get all activities at /channelmessages" do
+      it "returns all sentmessages" do
+        get "/sentmessages"
+        print response
+        expect(response).to have_http_status(200)
+      end
+    end
 
-RSpec.describe "SentFolders", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
-  end
 end

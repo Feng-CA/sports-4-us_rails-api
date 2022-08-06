@@ -1,5 +1,13 @@
 require 'rails_helper'
+RSpec.describe "/channelmessages", type: :request do
 
-RSpec.describe ChannelMessage, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "get all messages at /channelmessages" do
+    it "returns all channelmessages " do
+      get "/channelmessages"
+      expect(response).to have_http_status(:success)
+    end
+
+  end
+
 end

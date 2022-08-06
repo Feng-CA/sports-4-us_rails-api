@@ -1,5 +1,12 @@
-require 'rails_helper'
+RSpec.describe "/sentmessages", type: :request do
 
-RSpec.describe SentFolder, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "get all messages at /sentmessages" do
+    it "returns all sentmessages " do
+      get "/sentmessages"
+      expect(response).to have_http_status(:success)
+    end
+
+  end
+
 end

@@ -1,5 +1,13 @@
 require 'rails_helper'
+RSpec.describe "/messages", type: :request do
 
-RSpec.describe Message, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "get all messages at /messages" do
+    it "returns all messages " do
+      get "/messages"
+      expect(response).to have_http_status(:success)
+    end
+
+  end
+
 end
